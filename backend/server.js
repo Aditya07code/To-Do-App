@@ -13,7 +13,11 @@ const mongoose = require('mongoose')
 const app = express();
 const PORT = process.env.PORT || 5000
 app.use(cors());
-// app.set("view engine","ejs");
+const allowedOrigins = [process.env.FRONTEND_URL];  
+
+app.use(cors({
+  origin: allowedOrigins,
+}));
 app.use(express.json());
 // app.use(express.urlencoded({extended:true}));
 // app.use(express.static(path.join(__dirname,"public")));
